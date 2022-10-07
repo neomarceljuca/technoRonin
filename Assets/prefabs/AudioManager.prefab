@@ -50,12 +50,6 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Theme1
-    clip: {fileID: 8300000, guid: e2325f6e997dd4b40b6d87ac78b4ca08, type: 3}
-    volume: 0.9
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
   - name: Steps
     clip: {fileID: 8300000, guid: 28f1d7bf5f6893e4d85351dcd03d4dc9, type: 3}
     volume: 1
@@ -69,12 +63,12 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Sheathe
-    clip: {fileID: 8300000, guid: d57185d0774c65a49a2bfef392a2c304, type: 3}
+    clip: {fileID: 8300000, guid: f869dc9b6e195e84da8f32e5faf184a0, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: CrateBrake
+  - name: CrateBreak
     clip: {fileID: 8300000, guid: fe1ff23609075094cbb9c27581e1f4a8, type: 3}
     volume: 0.4
     pitch: 1
@@ -84,5 +78,73 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8c59ae6fc12e0534f9be5205bf8dc9cf, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SlashHitKunai
+    clip: {fileID: 8300000, guid: 2a289a8b0e5d8f04bb16419a45e2ea2a, type: 3}
+    volume: 0.509
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BladeHit
+    clip: {fileID: 8300000, guid: ffff1f1cbb9217d42a804b5b64d8ca5f, type: 3}
+    volume: 0.509
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PerfectHit
+    clip: {fileID: 8300000, guid: bb61e67fab7a54c46a1e6f0ac36e0b9a, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PerfectHit2
+    clip: {fileID: 8300000, guid: 882c4a76869e2a141a3aa0387a256f5e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  soundtracks:
+  - name: Techno drum loop - Djfroyd
+    clip: {fileID: 8300000, guid: fc3eed161a8fd8548a00031a560876e6, type: 3}
+    volume: 0.94
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: 127_techno_dark_wander - Evoke Music
+    clip: {fileID: 8300000, guid: 71b6babca1adf414fbe53b323b44d0e9, type: 3}
+    volume: 0.794
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: 127_techno_dark_heavy - Evoke Music
+    clip: {fileID: 8300000, guid: b48ab6b95d26efd48a1228d7a9dbffa5, type: 3}
+    volume: 0.896
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: 126_techno_restless_concentrate - Evoke Music
+    clip: {fileID: 8300000, guid: 6e0bd93efb45d4941ba87656dcbb55fc, type: 3}
+    volume: 0.794
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: 130_techno_dark_concentrate - Evoke Music
+    clip: {fileID: 8300000, guid: f154f15152398b440866c257c6081534, type: 3}
+    volume: 0.794
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: 140_techno_revenge_dancing - Evoke Music
+    clip: {fileID: 8300000, guid: 825d3744896759e4f9946630cd37a580, type: 3}
+    volume: 0.794
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  playingSoundTrack:
+    name: 
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
     loop: 0
     source: {fileID: 0}

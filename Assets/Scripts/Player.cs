@@ -92,6 +92,7 @@ public class Player : MonoBehaviour
         {
             m_Grounded = false;
             m_Rigidbody2D.velocity = new Vector2(0f, 0f);
+            m_Rigidbody2D.position = m_Rigidbody2D.position + new Vector2(0,0.005f);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce) * m_Rigidbody2D.mass);
             myAnimator.SetBool("Jumping", true);
             myAudioManager.StopPlaying("Steps");
