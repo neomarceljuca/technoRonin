@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 public class AudioManager : MonoBehaviour
 {
-    //atributos
+    //atributes
     public Sound[] sounds;
     public Sound[] soundtracks;
 
@@ -18,8 +18,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
-    //metodos de inicializacao
-    void Awake()  //metodo responsavel  por implementar o singleton.
+    //initialization
+    void Awake()  //Singleton
     {
         if (instance == null)
         {

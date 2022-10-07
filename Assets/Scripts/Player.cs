@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
                 if (!wasGrounded && m_Rigidbody2D.velocity.y < 0)
                 {
                     myAnimator.SetBool("Jumping", false);
-                    if(!gameOver) myAudioManager.Play("Steps");
+                    if (!gameOver) myAudioManager.Play("Steps");
                     //OnLandEvent.Invoke();
                 }
             }
@@ -86,11 +86,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Jump() {
-        // Add a vertical force to the player.
-
+    public void Jump()
+    {
         if (m_Grounded && !gameOver)
-        { 
+        {
             m_Grounded = false;
             m_Rigidbody2D.velocity = new Vector2(0f, 0f);
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce) * m_Rigidbody2D.mass);
@@ -102,7 +101,7 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         if (Time.time > nextAttackTime && !gameOver)
-        { 
+        {
             myAnimator.SetTrigger("Attack");
             mySlashFX.SetTrigger("Attack1");
             nextAttackTime = Time.time + 1f / attackRate;
@@ -112,11 +111,12 @@ public class Player : MonoBehaviour
 
     }
 
-    
-private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "Enemy" && !steppingOnBox) {
+        if (collision.gameObject.tag == "Enemy" && !steppingOnBox)
+        {
             if (!gameOver)
             {
                 Physics2D.IgnoreCollision(collision.gameObject.GetComponent<Collider2D>(), myCollider);
@@ -139,11 +139,11 @@ private void OnCollisionEnter2D(Collision2D collision)
     }
 
 
-    void Die() 
+    void Die()
     {
         gameOver = true;
         myAudioManager.StopPlaying("Steps");
-        
+
         myAnimator.SetBool("Died", true);
         GameObject foreground = GameObject.Find("FloorQuad");
         GameObject background = GameObject.Find("BackGroundQuad");
@@ -155,9 +155,9 @@ private void OnCollisionEnter2D(Collision2D collision)
 
     private void OnDrawGizmosSelected()
     {
-        if (attackPoint == null || perfectHitPoint == null) 
-        { 
-            return; 
+        if (attackPoint == null || perfectHitPoint == null)
+        {
+            return;
         }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
@@ -181,27 +181,27 @@ private void OnCollisionEnter2D(Collision2D collision)
         {
             m_Rigidbody2D.velocity = new Vector2(0, ySpeed / 10f);
         }
-        else 
+        else
         {
             m_Rigidbody2D.velocity = new Vector2(0, ySpeed / 5f);
         }
-        
+
         float temp = m_Rigidbody2D.gravityScale;
         m_Rigidbody2D.gravityScale = 0.1f;
         yield return new WaitForSeconds(waitTime);
         m_Rigidbody2D.gravityScale = temp;
     }
 
-    private IEnumerator WaitAndDestroyObject(Collider2D enemy) 
+    private IEnumerator WaitAndDestroyObject(Collider2D enemy)
     {
-        while(Time.timeScale != 1.0f) 
+        while (Time.timeScale != 1.0f)
         {
             yield return null;
         }
         Destroy(enemy.transform.parent.gameObject, 0.0f);
     }
 
-    private IEnumerator WaitAndDisableSlashFX() 
+    private IEnumerator WaitAndDisableSlashFX()
     {
         while (Time.timeScale != 1.0f)
         {
@@ -210,12 +210,12 @@ private void OnCollisionEnter2D(Collision2D collision)
         mySlashFX2.enabled = false;
     }
 
-    private IEnumerator WaitAttackAnimationThenProceed(float waitTime) 
+    private IEnumerator WaitAttackAnimationThenProceed(float waitTime)
     {
         if (!m_Grounded) StartCoroutine(FloatOnSlash(1.0f));
         yield return new WaitForSeconds(waitTime);
 
-        
+
 
         myAudioManager.Play("SlashSwing");
         myAudioManager.Play("Woosh");
@@ -224,14 +224,14 @@ private void OnCollisionEnter2D(Collision2D collision)
         Collider2D[] hitEnemies = { };
         Collider2D[] perfectHitEnemies = { };
 
-        if (!gameOver) 
+        if (!gameOver)
         {
             hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
             perfectHitEnemies = Physics2D.OverlapCircleAll(perfectHitPoint.position, perfectHitRange, enemyLayers);
 
-            
-        } 
-   
+
+        }
+
         //destroy, damage or interact
 
         foreach (Collider2D enemy in hitEnemies)
@@ -239,7 +239,7 @@ private void OnCollisionEnter2D(Collision2D collision)
             Object hitObj = enemy.transform.gameObject.GetComponent<Object>();
             hitObj.turnBlank();
             hitObj.ThrowParticles();
-            
+
             playHitSound(hitObj);
             hitObj.ignoreCollisions(myCollider);
 
@@ -250,7 +250,7 @@ private void OnCollisionEnter2D(Collision2D collision)
         }
 
         //camera shake and hit pause check
-        if (hitEnemies.Length > 0) 
+        if (hitEnemies.Length > 0)
         {
             mySlashFX2.enabled = true;
             mySlashFX2.GetComponent<SpriteRenderer>().color = sampleColor;
@@ -267,9 +267,9 @@ private void OnCollisionEnter2D(Collision2D collision)
                 myHitStopController.CompositeStopAndSlowMO(0.1f, 0.5f, 0.3f);
                 myAudioManager.Play("PerfectHit2");
                 myScoreCounter.UpdateScore(10);
-                
+
             }
-            else 
+            else
             {
                 StartCoroutine(cameraShake.Shake(0.15f, 0.1f));
                 myHitStopController.Stop(0.15f);
@@ -277,17 +277,17 @@ private void OnCollisionEnter2D(Collision2D collision)
 
 
 
-            StartCoroutine( WaitAndDisableSlashFX());
+            StartCoroutine(WaitAndDisableSlashFX());
         }
 
 
     }
 
 
-    void playHitSound(Object hit) 
+    void playHitSound(Object hit)
     {
-       switch (hit.transform.parent.name) 
-       {
+        switch (hit.transform.parent.name)
+        {
             case "Crate":
                 myAudioManager.Play("SlashHitCrate");
                 break;
